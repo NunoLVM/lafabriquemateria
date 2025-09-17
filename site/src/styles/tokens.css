@@ -1,0 +1,21 @@
+:root {
+  /* --brand-primary: #b86028;
+  --brand-accent: #b06030; */
+
+  --text-color: #000000;
+  --bg-color: #ffffff;
+
+  /* opcionais (se quiseres usar já) */
+  --brand-cuir: #ba632e;
+  --brand-corail: #ff8261;
+  --brand-beige: #dbbd9e;
+  --brand-kaki: #bfab8a;
+  --brand-aqua: #dee8de;
+  --brand-green: #a4bbb5;
+
+  --font-headings: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --container-max: 1200px;
+  --space: 1rem;
+}
