@@ -1,6 +1,6 @@
 ---
 import "../styles/tokens.css";
-const { title = "La Fabrique Matéria", description = "" } = Astro.props;
+const { title = "La Fabrique Materia", description = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,10 +13,17 @@ const { title = "La Fabrique Matéria", description = "" } = Astro.props;
     <style>
       /* Estilo mínimo só para a demo da reunião */
       body {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
         margin: 0;
         color: var(--text-color);
         background: var(--bg-color);
         font-family: var(--font-body);
+      }
+
+      main {
+        flex: 1;
       }
       .container {
         max-width: var(--container-max);
@@ -70,9 +77,10 @@ const { title = "La Fabrique Matéria", description = "" } = Astro.props;
   <body>
     <header>
       <div class="container bar">
-        <a href="/" class="brand" aria-label="Retour à l’accueil">La Fabrique Matéria</a>
+        <a href="/" class="brand" aria-label="Retour à l’accueil">La Fabrique materia</a>
         <nav aria-label="Navigation principale">
           <a href="/">Accueil</a>
+          <a href="/inspirations">Inspirations</a>
           <a href="/savoir-faire">Savoir-faire</a>
           <a href="/realisations">Réalisations</a>
           <a href="/contact">Contact</a>
@@ -86,7 +94,7 @@ const { title = "La Fabrique Matéria", description = "" } = Astro.props;
 
     <footer>
       <div class="container inner">
-        © {new Date().getFullYear()} La Fabrique Matéria · <a href="/mentions-legales">Mentions légales</a>
+        © {new Date().getFullYear()} La Fabrique materia · <a href="/mentions-legales">Mentions légales</a>
       </div>
     </footer>
   </body>
