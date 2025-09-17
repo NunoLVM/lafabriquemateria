@@ -1,0 +1,93 @@
+---
+import "../styles/tokens.css";
+const { title = "La Fabrique Matéria", description = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <style>
+      /* Estilo mínimo só para a demo da reunião */
+      body {
+        margin: 0;
+        color: var(--text-color);
+        background: var(--bg-color);
+        font-family: var(--font-body);
+      }
+      .container {
+        max-width: var(--container-max);
+        margin-inline: auto;
+        padding: 0 var(--space);
+      }
+      header {
+        background: var(--bg-color);
+        border-bottom: 1px solid var(--brand-beige); /* subtle divider */
+      }
+      header .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space) 0;
+      }
+      header .brand {
+        font-family: var(--font-headings);
+        font-weight: 700;
+        color: var(--brand-cuir);
+        text-decoration: none;
+      }
+      nav a {
+        margin-left: 1rem;
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--text-color);
+      }
+      nav a:hover,
+      nav a:focus {
+        color: var(--brand-corail); /* accent on hover/focus */
+        text-decoration: underline;
+        outline: none;
+      }
+
+      footer {
+        margin-top: 2rem;
+        border-top: 1px solid var(--brand-beige);
+        background: var(--bg-color);
+        color: #555;
+      }
+      footer .inner {
+        padding: 1rem 0;
+      }
+      :focus {
+        outline: 2px solid var(--brand-corail);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container bar">
+        <a href="/" class="brand" aria-label="Retour à l’accueil">La Fabrique Matéria</a>
+        <nav aria-label="Navigation principale">
+          <a href="/">Accueil</a>
+          <a href="/savoir-faire">Savoir-faire</a>
+          <a href="/realisations">Réalisations</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container inner">
+        © {new Date().getFullYear()} La Fabrique Matéria · <a href="/mentions-legales">Mentions légales</a>
+      </div>
+    </footer>
+  </body>
+</html>
