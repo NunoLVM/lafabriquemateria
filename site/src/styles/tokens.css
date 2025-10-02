@@ -1,21 +1,37 @@
 :root {
-  /* --brand-primary: #b86028;
-  --brand-accent: #b06030; */
+  /* Palette officielle */
+  --color-cuir:   #ba632e;
+  --color-corail: #ff8261;
+  --color-beige:  #dbbd9e;
+  --color-kaki:   #bfab8a;
+  --color-aqua:   #dee8de;
+  --color-green:  #a4bbb5;
+  --color-black:  #000000;
+  --color-white:  #ffffff;
 
-  --text-color: #000000;
-  --bg-color: #ffffff;
+  /* Typographies (placeholder por agora) */
+  --font-primary:  "Poppins", sans-serif;
+  --font-secondary:"Bodoni 72 Oldstyle", serif;
+  --font-special:  "Bill Corp Nar", sans-serif;
 
-  /* opcionais (se quiseres usar já) */
-  --brand-cuir: #ba632e;
-  --brand-corail: #ff8261;
-  --brand-beige: #dbbd9e;
-  --brand-kaki: #bfab8a;
-  --brand-aqua: #dee8de;
-  --brand-green: #a4bbb5;
+  /* Rythme */
+  --spacing-sm: .5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
 
-  --font-headings: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-body: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  /* Aliases usados pelo layout */
+  --text-color: var(--color-black);
+  --bg-color:   var(--color-white);
+  --brand-primary: var(--color-cuir);
+  --brand-accent:  var(--color-corail);
+  --divider:       var(--color-beige);
 
   --container-max: 1200px;
-  --space: 1rem;
+  --header-height: 50px;
+  --bg-color-rgb: 255,255,255; /* para compor rgba() do header */
+
+  --footer-bg: var(--color-cuir);
+  --footer-text: var(--color-white);
+  --footer-muted: #bfc3c7;
+
 }
