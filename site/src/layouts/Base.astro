@@ -12,6 +12,10 @@ const { title = "La Fabrique Materia", description = "" } = Astro.props;
     <meta name="description" content={description} />
     <style>
       /* Estilo mínimo só para a demo da reunião */
+
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         min-height: 100dvh;
         display: flex;
@@ -79,11 +83,10 @@ const { title = "La Fabrique Materia", description = "" } = Astro.props;
       <div class="container bar">
         <a href="/" class="brand" aria-label="Retour à l’accueil">La Fabrique materia</a>
         <nav aria-label="Navigation principale">
-          <a href="/">Accueil</a>
-          <a href="/inspirations">Inspirations</a>
-          <a href="/savoir-faire">Savoir-faire</a>
-          <a href="/realisations">Réalisations</a>
-          <a href="/contact">Contact</a>
+          <a href="#accueil">Accueil</a>
+          <a href="#savoir-faire">Savoir-faire</a>
+          <a href="#realisations">Réalisations</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
