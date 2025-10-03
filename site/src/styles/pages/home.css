@@ -183,3 +183,9 @@ textarea:focus {
   margin-top: 0.25rem;
 } /* mantém a card logo abaixo do título */
 
+/* honeypot (esconde de humanos, bots costumam preencher) */
+.hp{
+  position:absolute !important;
+  left:-10000px !important;
+  width:1px; height:1px; opacity:0; pointer-events:none;
+}
