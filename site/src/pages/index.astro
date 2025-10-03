@@ -1,0 +1,97 @@
+---
+import Base from "../layouts/Base.astro";
+import "../styles/pages/home.css";
+---
+
+<Base title="Accueil — La Fabrique materia" description="Page d’accueil du site vitrine.">
+  <section id="accueil" class="section hero">
+    <h1>La matière au cœur de chaque création</h1>
+    <p>Savoir-faire, textures et finitions d’exception.</p>
+  </section>
+
+  <section id="savoir-faire" class="section">
+    <h2>Savoir-faire</h2>
+    <p>Contenu provisoire.</p>
+  </section>
+
+  <section id="a-propos" class="section">
+    <h2>À propos</h2>
+    <p>Contenu provisoire.</p>
+  </section>
+
+  <section id="contact" class="section section--contact">
+    <h2 class="contact-title">Contactez-nous</h2>
+    <p class="contact-lead">
+      Vous avez un projet ? Une question sur nos matériaux ? N'hésitez pas à nous contacter pour discuter de vos
+      besoins.
+    </p>
+
+    <div class="contact-grid">
+      <form class="form" aria-label="Formulaire de contact">
+        <h3 class="contact-subtitle">Parlons de votre projet</h3>
+
+        <div class="form-grid">
+          <div>
+            <label for="prenom">Prénom *</label>
+            <input id="prenom" name="prenom" type="text" required />
+          </div>
+          <div>
+            <label for="nom">Nom *</label>
+            <input id="nom" name="nom" type="text" required />
+          </div>
+
+          <div class="col-2">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="col-2">
+            <label for="telephone">Téléphone</label>
+            <input id="telephone" name="telephone" type="tel" />
+          </div>
+
+          <div class="col-2">
+            <label for="type-demande">Type de demande *</label>
+            <select id="type-demande" name="type_demande" required>
+              <option value="" selected disabled>Sélectionnez le type de demande</option>
+              <option>Demande de devis</option>
+              <option>Informations produits</option>
+              <option>Visite d’atelier</option>
+              <option>Partenariat</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="col-2">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+        </div>
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <button type="submit" class="btn-solid">Envoyer le message</button>
+      </form>
+
+      <aside class="contact-aside">
+        <h3 class="contact-heading">Nos coordonnées</h3>
+        <div class="card">
+          <ul class="contact-list">
+            <li>
+              <strong>Adresse</strong><br />
+              Atelier n° 37<br />
+              TECNHOPÔLE DOMOLAND<br />
+              50 All. de Cérès<br />
+              40230 Saint-Geours-de-Maremne
+            </li>
+            <li><strong>Téléphone</strong><br />+33 5 59 24 78 92</li>
+            <li>
+              <strong>Email</strong><br /><a href="mailto:contact@lafabriquemateria.com"
+                >contact@lafabriquemateria.com</a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
