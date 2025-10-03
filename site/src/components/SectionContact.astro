@@ -1,0 +1,26 @@
+---
+import ContactForm from "./ContactForm.astro";
+---
+
+<section id="contact" class="section section--contact">
+  <h2 class="contact-title">Contactez-nous</h2>
+  <p class="contact-lead">
+    Vous avez un projet ? Une question sur nos matériaux ? N'hésitez pas à nous contacter pour discuter de vos besoins.
+  </p>
+
+  <div class="contact-grid">
+    <ContactForm />
+    <aside class="contact-aside">
+      <h3 class="contact-heading">Nos coordonnées</h3>
+      <div class="card">
+        <ul class="contact-list">
+          <li><strong>Adresse</strong><br />15 Route des Artisans<br />64200 Biarritz, France</li>
+          <li><strong>Téléphone</strong><br />+33 5 59 24 78 92</li>
+          <li>
+            <strong>Email</strong><br /><a href="mailto:contact@lafabrique-materia.fr">contact@lafabrique-materia.fr</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
