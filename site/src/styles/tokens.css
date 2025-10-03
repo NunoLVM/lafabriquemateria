@@ -1,0 +1,37 @@
+:root {
+  /* Palette officielle */
+  --color-cuir:   #ba632e;
+  --color-corail: #ff8261;
+  --color-beige:  #dbbd9e;
+  --color-kaki:   #bfab8a;
+  --color-aqua:   #dee8de;
+  --color-green:  #a4bbb5;
+  --color-black:  #000000;
+  --color-white:  #ffffff;
+
+  /* Typographies (placeholder por agora) */
+  --font-primary:  "Poppins", sans-serif;
+  --font-secondary:"Bodoni 72 Oldstyle", serif;
+  --font-special:  "Bill Corp Nar", sans-serif;
+
+  /* Rythme */
+  --spacing-sm: .5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Aliases usados pelo layout */
+  --text-color: var(--color-black);
+  --bg-color:   var(--color-white);
+  --brand-primary: var(--color-cuir);
+  --brand-accent:  var(--color-corail);
+  --divider:       var(--color-beige);
+
+  --container-max: 1200px;
+  --header-height: 50px;
+  --bg-color-rgb: 255,255,255; /* para compor rgba() do header */
+
+  --footer-bg: var(--color-cuir);
+  --footer-text: var(--color-white);
+  --footer-muted: #bfc3c7;
+
+}

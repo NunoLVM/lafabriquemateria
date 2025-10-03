@@ -1,0 +1,73 @@
+---
+import "../styles/global.css";
+const { title = "La Fabrique materia", description = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header>
+      <div class="container bar">
+        <a class="brand" href="/" aria-label="Retour à l’accueil">La Fabrique materia</a>
+        <nav aria-label="Navigation principale">
+          <a href="#accueil">Accueil</a>
+          <a href="#savoir-faire">Savoir-faire</a>
+          <a href="#a-propos">À&nbsp;propos</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h4 class="footer-brand">La Fabrique materia</h4>
+          <p class="footer-desc">Transformer les rebuts en ressources, la matière en idées.</p>
+        </div>
+
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-nav">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#savoir-faire">Savoir-faire</a></li>
+            <li><a href="#a-propos">À&nbsp;propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <address class="footer-contact">
+            <div>Adresse — …</div>
+            <a href="tel:+33...">+33 …</a><br />
+            <a href="mailto:contact@lafabrique-materia.fr">contact@lafabrique-materia.fr</a>
+          </address>
+        </div>
+
+        <div>
+          <h4>Suivez–nous</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><img src="/images/facebook.svg" alt="" width="18" height="18" /></a>
+            <a href="#" aria-label="Instagram"><img src="/images/instagram.svg" alt="" width="18" height="18" /></a>
+            <a href="#" aria-label="LinkedIn"><img src="/images/linkedin.svg" alt="" width="18" height="18" /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <span>© {new Date().getFullYear()} La Fabrique materia. Tous droits réservés.</span>
+        <a href="/mentions-legales">Mentions légales</a>
+      </div>
+    </footer>
+  </body>
+</html>
