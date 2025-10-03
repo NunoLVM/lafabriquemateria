@@ -56,7 +56,7 @@
 }
 
 /* cartão */
-.card {
+.section--contact .card {
   margin-top: 0.25rem;
   padding: 1.25rem 1.25rem 1.35rem;
   background: #fff;
@@ -75,14 +75,14 @@
   grid-column: 1 / -1;
 }
 
-label {
+.section--contact label {
   display: block;
   font-size: 0.95rem;
   margin-bottom: 0.4rem;
 }
-input,
-select,
-textarea {
+.section--contact input,
+.section--contact select,
+.section--contact textarea {
   width: 100%;
   padding: 0.9rem 1.1rem;
   border: 1px solid var(--divider);
@@ -91,14 +91,14 @@ textarea {
   font: inherit;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
 }
-input:focus,
-select:focus,
-textarea:focus {
+.section--contact input:focus,
+.section--contact select:focus,
+.section--contact textarea:focus {
   outline: none;
   border-color: var(--brand-primary);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-primary) 25%, transparent);
 }
-::placeholder {
+.section--contact ::placeholder {
   color: #8a949c;
   opacity: 1;
 }
