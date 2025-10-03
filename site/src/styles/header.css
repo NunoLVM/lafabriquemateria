@@ -1,0 +1,16 @@
+/* Header / Nav */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background: rgba(var(--bg-color-rgb), .85);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid var(--divider);
+}
+header .bar{display:flex; align-items:center; gap:var(--spacing-lg); padding:var(--spacing-md) 0}
+header .brand{font-family:var(--font-secondary); font-weight:700; font-size:xx-large; color:var(--brand-primary); text-decoration:none}
+
+nav{margin-left:auto; display:flex; gap:3rem; padding-right:var(--spacing-lg)}
+nav a{
+  font-family:var(--font-primary); font-weight:400; letter-spacing:.02em; text-decoration:none; color:var(--text-color);
+  display:inline-block; transform:translateZ(0); transition: color .45s ease, transform .45s ease;
+}
+nav a:hover,nav a:focus{color:var(--brand-accent); text-decoration:none; transform:scale(1.06); outline:none}
