@@ -1,0 +1,11 @@
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: var(--bg-color);
+  border-radius: 12px;
+}
+.hero::after {
+  content: none;
+}

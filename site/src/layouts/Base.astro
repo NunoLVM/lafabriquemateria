@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-const { title = "La Fabrique Matéria", description = "" } = Astro.props;
+import CookieBanner from "../components/CookieBanner.astro";
+const { title = "La Fabrique Materia", description = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,9 +11,17 @@ const { title = "La Fabrique Matéria", description = "" } = Astro.props;
   <head>
     <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title><meta name="description" content={description} />
-  </head><body>
+  </head>
+
+  <body>
+     
     <Header />
-    <main class="container"><slot /></main>
-    <Footer />
+    <main id="contenu" class="container">
+      <main class="container">
+        <slot />
+      </main>
+      <!-- <CookieBanner /> -->
+      <Footer />
+   
   </body>
 </html>
