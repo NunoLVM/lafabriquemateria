@@ -7,7 +7,7 @@
   text-align: center;
   color: var(--text-color);
 }
-.hero > *{ position: relative; z-index: 2; }   /* conteúdo por cima */
+.hero > :not(.scroll-cue){ position: relative; z-index: 4; }
 
 /* camada 1 — fill desfocado (cover) para encher bordas */
 .hero .hero-media{

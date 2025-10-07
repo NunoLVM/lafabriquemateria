@@ -1,0 +1,8 @@
+---
+const { target = "/#savoir-faire", label = "Faire défiler vers la suite" } = Astro.props;
+import "../styles/components/scroll-cue.css";
+---
+
+<a class="scroll-cue" href={target} aria-label={label}>
+  <img class="icon" src="/images/seta.svg" alt="" aria-hidden="true" width="28" height="28" />
+</a>

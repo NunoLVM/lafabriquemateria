@@ -1,5 +1,13 @@
 .section {
-  min-height: 100vh;
+  position: relative;
+  min-height: 92vh;
   padding: 4rem 0;
   scroll-margin-top: calc(var(--header-height) + 8px);
+}
+.section > .scroll-cue{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: clamp(20px, 8vh, 64px);            /* sobe um pouco p/ ficar visível ao saltar */
+  z-index: 60;
 }
