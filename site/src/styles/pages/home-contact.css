@@ -1,4 +1,8 @@
 /* ---------- Contact (full-bleed) ---------- */
+
+.contact-aside {
+  width: 100%;
+}
 .section--contact {
   min-height: auto;
   /* top | lr | bottom */
@@ -31,23 +35,36 @@
   font-weight: 700;
   font-size: clamp(1.6rem, 3vw, 1.875rem);
   line-height: 1.2;
-  margin: 0 0 1rem;
+  margin: 0 0 1rem; /* topo=0 */
+  text-align: left;
 }
 .contact-heading {
   font-family: var(--font-secondary);
   font-weight: 700;
   font-size: clamp(1.6rem, 3vw, 1.875rem);
   line-height: 1.2;
-  margin: 0 0 0.75rem;
+  margin: 0 0 1rem; /* topo=0 igual ao da esquerda */
 }
 
 /* layout 2 colunas */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  column-gap: clamp(2.5rem, 6vw, 5rem);
+  grid-template-columns: minmax(560px, 1.5fr) minmax(380px, 1fr);
+  column-gap: clamp(3rem, 6vw, 5rem);
   row-gap: clamp(1.25rem, 3vw, 2.5rem);
-  align-items: start; /* ← faltava ; */
+  align-items: start;
+}
+
+.section--contact .contact-grid > * {
+  margin-top: 0;
+  padding-top: 0;
+  align-self: start;
+}
+
+@media (max-width: 1100px) {
+  .contact-grid {
+    grid-template-columns: 1.2fr 1fr; /* um pouco mais estreito em ecrãs médios */
+  }
 }
 @media (max-width: 900px) {
   .contact-grid {
@@ -70,6 +87,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Prénom | Nom */
   gap: 1.1rem;
+  margin-top: 0;
 }
 .form-grid .col-2 {
   grid-column: 1 / -1;
@@ -83,6 +101,7 @@
 .section--contact input,
 .section--contact select,
 .section--contact textarea {
+  resize: none;
   width: 100%;
   padding: 0.9rem 1.1rem;
   border: 1px solid var(--divider);
@@ -146,6 +165,8 @@
   color: #fff;
   font-weight: 600;
   transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  display: block;
 }
 .btn-solid:hover {
   background: var(--brand-accent);
