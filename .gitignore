@@ -1,0 +1,12 @@
+# Site (Astro)
+site/node_modules/
+site/dist/
+site/.astro/
+site/.vercel/
+site/.netlify/
+
+# SO / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json

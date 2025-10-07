@@ -26,9 +26,11 @@
   --brand-accent:  var(--color-corail);
   --divider:       var(--color-beige);
 
-  --container-max: 1200px;
+  --container-max: 1500px;
   --header-height: 50px;
   --bg-color-rgb: 255,255,255; /* para compor rgba() do header */
+  --gutter: clamp(1rem, 6vw, 4rem);
+
 
   --footer-bg: var(--color-cuir);
   --footer-text: var(--color-white);
