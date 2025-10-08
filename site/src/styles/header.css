@@ -47,6 +47,12 @@ nav a:focus {
   outline: none;
 }
 
+nav a.is-active{
+  color: var(--brand-accent);
+  transform: scale(1.06);
+}
+
+
 .burger {
   display: none;
   font-size: 2rem;
