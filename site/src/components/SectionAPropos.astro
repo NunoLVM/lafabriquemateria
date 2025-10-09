@@ -1,10 +1,86 @@
 ---
+import "../styles/pages/home-a-propos.css";
 import ScrollCue from "./ScrollCue.astro";
 ---
 
-<section id="a-propos" class="section">
-<section id="a-propos" class="section ap">
-  <h2>À propos</h2>
-  <p>Contenu provisoire.</p>
-  <ScrollCue target="/#contact" />
+<section id="a-propos" class="section section--apropos">
+  <div class="container">
+    <h2>À Propos de Nous</h2>
+    <p class="lead">
+      Découvrez l’histoire et les valeurs qui animent La Fabrique Materia, acteur engagé de l’économie circulaire.
+    </p>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>Notre Histoire</h3>
+        <p>
+          Née dans le Pays Basque en 2019, La Fabrique Materia est le fruit d’une passion pour l’artisanat et d’une
+          conscience écologique profonde.
+        </p>
+        <p>
+          Inspirés par les traditions locales, nous avons développé un savoir-faire unique qui valorise les rebuts en
+          ressources précieuses.
+        </p>
+      </div>
+
+      <figure class="about-media">
+        <img src="/images/IMG_1541.jpg" alt="Vue de l’atelier" loading="lazy" />
+      </figure>
+    </div>
+
+    <section class="mission" aria-labelledby="mission-title">
+      <h3 id="mission-title">Notre Mission</h3>
+      <ul class="mission-list">
+        <li>
+          <span class="dot dot--cuir" aria-hidden="true"></span>
+          <h4>Valorisation</h4>
+          <p>Transformer chaque rebut de cuir en ressource utile et esthétique.</p>
+        </li>
+        <li>
+          <span class="dot dot--corail" aria-hidden="true"></span>
+          <h4>Innovation</h4>
+          <p>Imaginer des solutions créatives pour des défis environnementaux.</p>
+        </li>
+        <li>
+          <span class="dot dot--aqua" aria-hidden="true"></span>
+          <h4>Transmission</h4>
+          <p>Préserver et transmettre le savoir-faire artisanal français.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="team" aria-labelledby="equipe-title">
+      <h3 id="equipe-title">Notre Équipe</h3>
+      <ul class="team-list">
+        <li>
+          <figure class="team-card">
+            <img src="/images/team/test3.jpg" alt="Portrait de Marie Dubois" />
+            <figcaption>
+              <strong class="name">Marie Dubois</strong>
+              <span class="role">Co-fondatrice</span>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="team-card">
+            <img src="/images/team/test.png" alt="Portrait de Jean-Baptiste Exteberria" />
+            <figcaption>
+              <strong class="name">Jean-Baptiste Exteberria</strong>
+              <span class="role">Co-fondateur</span>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="team-card">
+            <img src="/images/team/test2.jpg" alt="Portrait de Léa Martin" />
+            <figcaption>
+              <strong class="name">Léa Martin</strong>
+              <span class="role">Responsable atelier</span>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+  </div>
+   
 </section>

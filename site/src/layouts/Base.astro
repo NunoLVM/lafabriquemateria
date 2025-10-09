@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import "../styles/components/scroll-cue.css";
 import CookieBanner from "../components/CookieBanner.astro";
 const { title = "La Fabrique Materia", description = "" } = Astro.props;
 ---
@@ -22,5 +23,10 @@ const { title = "La Fabrique Materia", description = "" } = Astro.props;
       <!-- <CookieBanner /> -->
     </main>
     <Footer />
+
+    <a class="scroll-cue fixed" href="/#savoir-faire" aria-label="Faire défiler">
+      <img class="icon" src="/images/seta.svg" alt="" aria-hidden="true" width="22" height="22" />
+    </a>
+    <script src="/scripts/scroll-cue.js" type="module"></script>
   </body>
 </html>

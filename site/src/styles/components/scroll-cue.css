@@ -1,9 +1,4 @@
 .scroll-cue {
-  position: absolute;
-  bottom: clamp(12px, 3vw, 28px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50; /* acima do overlay da hero */
   display: grid;
   place-items: center;
   width: 44px;
@@ -13,14 +8,7 @@
   backdrop-filter: blur(4px);
   transition: background 0.3s, transform 0.3s, opacity 0.3s;
 }
-.scroll-cue:hover {
-  background: rgba(0, 0, 0, 0.5);
-  transform: translateX(-50%) translateY(2px);
-}
 .scroll-cue .icon {
-  width: 22px;
-  height: 22px;
-  opacity: 0.95;
   animation: bob 1.8s ease-in-out infinite;
 }
 @keyframes bob {
@@ -31,4 +19,16 @@
   50% {
     transform: translateY(6px);
   }
+}
+
+.scroll-cue.fixed {
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: clamp(16px, 6vh, 56px);
+}
+.scroll-cue.fixed:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%) translateY(2px);
 }
