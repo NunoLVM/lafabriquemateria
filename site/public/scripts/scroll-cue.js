@@ -1,51 +1,56 @@
-// Atualiza o href da seta fixa para a próxima secção visível
+// Fixed scroll cue: always jump to the next section below the viewport
 (() => {
   const ORDER = ["accueil", "savoir-faire", "a-propos", "contact"];
   const cue = document.querySelector(".scroll-cue.fixed");
   if (!cue) return;
 
+  const cssVar = getComputedStyle(document.documentElement).getPropertyValue("--header-height");
+  const HEADER = parseInt(cssVar) || 64;
   const sections = ORDER.map((id) => document.getElementById(id)).filter(Boolean);
-
   if (sections.length < 2) {
     cue.style.display = "none";
     return;
   }
 
-  const linkTo = (i) => (i < sections.length - 1 ? `/#${ORDER[i + 1]}` : null);
+  const nextTargetId = () => {
+    const cutoff = window.scrollY + HEADER + 8; // início útil da janela
+    for (let i = 0; i < sections.length; i++) {
+      const top = sections[i].getBoundingClientRect().top + window.scrollY;
+      if (top > cutoff + 1) return sections[i].id; // primeira secção abaixo
+    }
+    return null;
+  };
 
-  const setForIndex = (i) => {
-    const href = linkTo(i);
-    if (href) {
-      cue.href = href;
+  const updateCue = () => {
+    const id = nextTargetId();
+    if (id) {
+      cue.href = `/#${id}`;
       cue.style.opacity = "1";
+      cue.style.pointerEvents = "auto";
     } else {
+      cue.href = "#";
       cue.style.opacity = "0";
       cue.style.pointerEvents = "none";
     }
   };
 
-  // IO: qual secção está mais visível?
-  const headerVar = getComputedStyle(document.documentElement).getPropertyValue("--header-height");
-  const HEADER = parseInt(headerVar) || 64;
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      const best = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!best) return;
-      const idx = sections.indexOf(best.target);
-      setForIndex(idx);
+  cue.addEventListener(
+    "click",
+    (e) => {
+      const id = (cue.getAttribute("href") || "").split("#")[1] || nextTargetId();
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      const y = el.getBoundingClientRect().top + window.scrollY - (HEADER + 8);
+      window.scrollTo({ top: y, behavior: "smooth" });
+      history.replaceState(null, "", `/#${id}`);
+      setTimeout(updateCue, 300);
     },
-    { rootMargin: `-${HEADER + 8}px 0px -45% 0px`, threshold: [0.2, 0.5, 0.75] }
+    { passive: false }
   );
 
-  sections.forEach((s) => io.observe(s));
+  ["scroll", "resize", "hashchange"].forEach((ev) => window.addEventListener(ev, updateCue, { passive: true }));
 
-  // estado inicial
-  if (location.hash) {
-    const id = location.hash.slice(1);
-    const idx = ORDER.indexOf(id);
-    if (idx >= 0) setForIndex(idx);
-  } else {
-    setForIndex(0);
-  }
+  updateCue();
 })();
