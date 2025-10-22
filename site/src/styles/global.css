@@ -1,10 +1,24 @@
-
-
 @import "./tokens.css";
 @import "./fonts.css";
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--font-primary);color:var(--text-color)}
-.container{max-width:var(--container-max);margin:0 auto;padding:0 clamp(1rem,5vw,2rem)}
-.section{min-height:70vh;padding:clamp(3rem,6vw,5rem) 0;scroll-margin-top:96px}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  color: var(--text-color);
+}
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 2rem);
+}
+.section {
+  min-height: 70vh;
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  scroll-margin-top: 96px;
+}

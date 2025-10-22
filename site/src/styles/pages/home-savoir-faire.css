@@ -1,7 +1,11 @@
 .sf {
+  display: grid;
+  align-items: center;
   background: var(--color-aqua);
   padding-block: clamp(3rem, 6vw, 5rem);
   padding-inline: max(0px, calc((100vw - var(--container-max)) / 2));
+  min-height: 100vh;
+  
 }
 
 /* --- Lede (título numa linha, justificado e colado ao texto) --- */
@@ -50,7 +54,7 @@
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 5vw, 3rem);
-  align-items:end;        /* colunas com a mesma altura */
+       
 }
 
 /* --- Coluna da imagem (alinhada em cima e em baixo com o texto) --- */

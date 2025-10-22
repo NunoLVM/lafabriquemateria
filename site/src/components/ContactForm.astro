@@ -1,38 +1,102 @@
-<form class="form" aria-label="Formulaire de contact">
-  <h3 class="contact-subtitle">Parlons de votre projet</h3>
+<form class="form" aria-label="Formulaire de contact" novalidate>
   <div class="form-grid">
     <div>
-      <label for="prenom">Prénom *</label>
-      <input id="prenom" name="prenom" type="text" required placeholder="Jean" />
+      <label for="firstname">Prénom *</label>
+      <input id="firstname" name="firstname" type="text" required autocomplete="given-name" placeholder="Jean" />
     </div>
+
     <div>
-      <label for="nom">Nom *</label>
-      <input id="nom" name="nom" type="text" required placeholder="Dupont" />
+      <label for="lastname">Nom *</label>
+      <input id="lastname" name="lastname" type="text" required autocomplete="family-name" placeholder="Dupont" />
     </div>
+    <div class="col-2">
+      <label for="company">Entreprise *</label>
+      <input
+        id="company"
+        name="company"
+        type="text"
+        required
+        placeholder="Nom de l’entreprise"
+        autocomplete="organization"
+      />
+    </div>
+
     <div class="col-2">
       <label for="email">Email *</label>
-      <input id="email" name="email" type="email" required placeholder="jean@email.com" />
+      <input id="email" name="email" type="email" required autocomplete="email" placeholder="jean@email.com" />
     </div>
+
     <div class="col-2">
-      <label for="telephone">Téléphone</label>
-      <input id="telephone" name="telephone" type="tel" placeholder="+33 ..." />
+      <label for="phone">Téléphone *</label>
+      <input id="phone" name="phone" type="tel" required inputmode="tel" placeholder="+33 ..." />
     </div>
+
     <div class="col-2">
-      <label for="type-demande">Type de demande *</label>
-      <select id="type-demande" name="type_demande" required>
-        <option value="" selected disabled>Sélectionnez le type de demande</option>
-        <option>Demande de devis</option>
-        <option>Informations produits</option>
-        <option>Visite d’atelier</option>
-        <option>Partenariat</option>
-        <option>Autre</option>
+      <label for="request-type">Type de demande *</label>
+      <select id="request-type" name="request_type" required>
+        <option value="" selected disabled>Choisissez un type</option>
+        <option value="infos">Demande d’informations</option>
+        <option value="partenariat">Partenariat</option>
+        <option value="echantillons">Échantillons</option>
       </select>
     </div>
+
+    <div class="col-2" id="subtype-wrap" hidden>
+      <label for="request-subtype">Sous-catégorie *</label>
+      <select id="request-subtype" name="request_subtype" required disabled>
+        <option value="" selected disabled>Choisissez une sous-catégorie</option>
+      </select>
+    </div>
+
     <div class="col-2">
       <label for="message">Message *</label>
       <textarea id="message" name="message" rows="6" required placeholder="Votre message..."></textarea>
     </div>
   </div>
+
+  <!-- honeypot -->
   <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-  <button type="submit" class="btn-solid btn-block">Envoyer le message</button>
+
+  <button type="submit" class="btn-solid">Envoyer le message</button>
+
+  <p class="form-note" aria-live="polite">* Champs obligatoires</p>
+
+  <script type="module">
+    const typeSelect = document.getElementById("request-type");
+    const subWrap = document.getElementById("subtype-wrap");
+    const subSelect = document.getElementById("request-subtype");
+
+    /** TODO: ajusta as listas conforme a charte produit */
+    const SUBTYPES = {
+      infos: ["Produits composites", "Délais & logistique", "Tarifs & devis", "Autre"],
+      partenariat: ["Co-développement", "Distribution", "Presse & médias", "Autre"],
+      echantillons: ["Plaques matériaux", "Finitions", "Couleurs", "Autre"],
+    };
+
+    typeSelect.addEventListener("change", () => {
+      const key = typeSelect.value;
+      subSelect.innerHTML = '<option value="" selected disabled>Choisissez une sous-catégorie</option>';
+      if (SUBTYPES[key]) {
+        SUBTYPES[key].forEach((label) => {
+          const opt = document.createElement("option");
+          opt.value = label.toLowerCase().replace(/\s+/g, "-");
+          opt.textContent = label;
+          subSelect.appendChild(opt);
+        });
+        subWrap.hidden = false;
+        subSelect.disabled = false;
+      } else {
+        subWrap.hidden = true;
+        subSelect.disabled = true;
+      }
+    });
+
+    // bloque submit se faltar algo (UX básica sem backend ainda)
+    document.currentScript.closest("form").addEventListener("submit", (e) => {
+      if (!e.target.checkValidity()) {
+        e.preventDefault();
+        e.target.reportValidity();
+      }
+    });
+  </script>
 </form>

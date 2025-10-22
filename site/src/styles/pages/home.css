@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
   padding: 4rem 0;
   scroll-margin-top: calc(var(--header-height) + 8px);
 }

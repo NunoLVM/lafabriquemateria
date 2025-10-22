@@ -1,32 +1,13 @@
 ---
 import ContactForm from "./ContactForm.astro";
+import "../styles/pages/home-contact.css";
 ---
 
-<section id="contact" class="section section--contact">
-  <h2 class="contact-title">Contactez-nous</h2>
-  <p class="contact-lead">
-    Vous avez un projet ? Une question sur nos matériaux ? N'hésitez pas à nous contacter pour discuter de vos besoins.
-  </p>
+<section id="contact" class="section section--contact" aria-labelledby="contact-title">
+  <div class="container contact-container">
+    <h2 id="contact-title" class="contact-title">Contact</h2>
+    <p class="contact-lead">Une question ? Une collaboration ? Écrivez-nous.</p>
 
-  <div class="contact-grid">
     <ContactForm />
-    <aside class="contact-aside">
-      <h3 class="contact-heading">Nos coordonnées</h3>
-      <div class="card">
-        <ul class="contact-list">
-          <li>
-            <strong>Adresse</strong><br />
-            Atelier n°37<br />
-            <span class="nowrap">TECHNOPÔLE DOMOLAND</span><br />
-            50 Allée de Cérès<br />
-            <span class="nowrap">40230&nbsp;Saint&#8209;Geours&#8209;de&#8209;Maremne</span>
-          </li>
-          <li><strong>Téléphone</strong><br />+33 5 55 55 55 55</li>
-          <li>
-            <strong>Email</strong><br /><a href="mailto:contact@lafabrique-materia.fr">contact@lafabrique-materia.fr</a>
-          </li>
-        </ul>
-      </div>
-    </aside>
   </div>
 </section>

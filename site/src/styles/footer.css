@@ -1,4 +1,4 @@
-/* Footer */
+/* ---------- Footer ---------- */
 footer {
   margin-top: 0;
   background: var(--footer-bg);
@@ -7,32 +7,76 @@ footer {
   box-shadow: 0 0 0 100vmax var(--footer-bg);
   clip-path: inset(0 -100vmax);
 }
+
+/* ---------- Grid layout ---------- */
 .footer-grid {
   display: grid;
-  grid-template-columns: auto 1fr auto; /* esq (logo+contact) | meio (social) | dir (nav) */
-  align-items: start;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
   column-gap: clamp(2rem, 3vw, 3rem);
-  padding: clamp(4.5rem, 9vw, 7rem) 0; /* antes ~2.5–3.5rem */
   row-gap: clamp(2rem, 4vw, 3rem);
+  padding: clamp(4.5rem, 9vw, 7rem) 0;
 }
-.footer-grid > div:nth-child(3){
+
+.footer-grid > div:nth-child(3) {
   justify-self: end;
-  margin-right: clamp(2.5rem, 8vw, 8rem); /* aumenta se precisares (ex.: 10rem) */
+  margin-right: clamp(2.5rem, 8vw, 8rem);
 }
 
-.footer-brand {
-  font-family: var(--font-secondary);
-  font-weight: 700;
-  font-size: 1.35rem;
-  margin: 0 0 0.75rem;
+/* ---------- Coluna 1: Logo + Contact ---------- */
+.footer-col--brand {
+  text-align: center;
 }
-.footer-desc {
-  margin: 0 0 1.25rem;
-  color: var(--footer-muted);
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.footer-contact {
   line-height: 1.7;
-  max-width: 42ch;
+  white-space: pre-line;
+  text-align: center;
 }
 
+.footer-contact a {
+  color: var(--footer-text);
+  text-decoration: none;
+  opacity: 0.9;
+}
+.footer-contact a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ---------- Coluna 2: Social ---------- */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  margin-top: 0.25rem;
+}
+
+.footer-social a {
+  display: grid;
+  place-items: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s, background 0.3s, opacity 0.3s;
+}
+.footer-social a:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.footer-social img {
+  width: 60px;
+  height: 60px;
+}
+
+/* ---------- Coluna 3: Navegação ---------- */
 .footer-nav {
   list-style: none;
   margin: 0;
@@ -53,41 +97,7 @@ footer {
   transform: translateX(2px);
 }
 
-.footer-contact {
-  line-height: 1.7;
-}
-.footer-contact a {
-  color: var(--footer-text);
-  text-decoration: none;
-  opacity: 0.9;
-}
-.footer-contact a:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-.footer-social {
-  display: flex;
-  gap: 1rem;
-}
-.footer-social a {
-  display: grid;
-  place-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s, background 0.3s, opacity 0.3s;
-}
-.footer-social a:hover {
-  transform: scale(1.2);
-  background: rgba(255, 255, 255, 0.18);
-}
-.footer-social img {
-  width: 30px;
-  height: 30px;
-}
-
+/* ---------- Bottom ---------- */
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding: clamp(2.25rem, 4vw, 3.25rem) 0;
@@ -100,6 +110,7 @@ footer {
   text-align: center;
   flex-wrap: wrap;
 }
+
 .footer-bottom a {
   color: var(--footer-text);
   text-decoration: none;
@@ -110,44 +121,20 @@ footer {
   text-decoration: underline;
 }
 
-.footer-grid > div:last-child {
-  text-align: center;
-}
-.footer-grid > div:last-child h4 {
-  margin-inline: auto;
-}
-.footer-grid > div:last-child .footer-social {
-  justify-content: center;
-}
-
+/* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
   .footer-grid > div:nth-child(3) {
     justify-self: start;
     margin-right: 0;
   }
 }
+
 @media (max-width: 560px) {
   .footer-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-/* Coluna 2 (Suivez–nous): tudo centrado */
-.footer-grid > div:nth-child(2){
-  text-align: center;
-}
-.footer-grid > div:nth-child(2) .footer-social{
-  justify-content: center;   /* centra o flex */
-  gap: clamp(.75rem, 2vw, 1.25rem);
-  margin-top: .25rem;        /* respiro abaixo do h4 (se existir) */
-}
-
-/* Em mobile mantém centrado (opcional) */
-@media (max-width: 900px){
-  .footer-grid > div:nth-child(2){
-    text-align: center;
-  }
-  .footer-grid > div:nth-child(2) .footer-social{
-    justify-content: center;
   }
 }
