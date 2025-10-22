@@ -1,19 +1,8 @@
 <footer>
   <div class="container footer-grid">
-    <div>
-      <h4 class="footer-brand">La Fabrique Materia</h4>
-      <p class="footer-desc">Transformer les rebuts en ressources, la matière en idées.</p>
-    </div>
-    <div>
-      <h4>Navigation</h4>
-      <ul class="footer-nav">
-        <li><a href="/#accueil">Accueil</a></li>
-        <li><a href="/#savoir-faire">Savoir-faire</a></li>
-        <li><a href="/#a-propos">À&nbsp;propos</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div>
+    <!-- COL 1: Logo + Contact -->
+    <div class="footer-col footer-col--brand">
+      <img src="/images/logo.png" alt="La Fabrique Materia" class="footer-logo" width="180" height="auto" />
       <h4>Contact</h4>
       <address class="footer-contact">
         <div>Adresse — …</div>
@@ -21,15 +10,34 @@
         <a href="mailto:contact@lafabrique-materia.fr">contact@lafabrique-materia.fr</a>
       </address>
     </div>
-    <div>
-      <h4>Suivez–nous</h4>
+
+    <!-- COL 2: Social -->
+    <div class="footer-col footer-col--social">
+      
       <div class="footer-social">
-        <a href="#" aria-label="Facebook"><img src="/images/facebook.svg" alt="" width="24" height="24" /></a>
-        <a href="#" aria-label="Instagram"><img src="/images/instagram.svg" alt="" width="24" height="24" /></a>
-        <a href="#" aria-label="LinkedIn"><img src="/images/linkedin.svg" alt="" width="24" height="24" /></a>
+        <a href="#" aria-label="Facebook" rel="noopener"
+          ><img src="/images/facebook.svg" alt="" width="24" height="24" /></a
+        >
+        <a href="#" aria-label="Instagram" rel="noopener"
+          ><img src="/images/instagram.svg" alt="" width="24" height="24" /></a
+        >
+        <a href="#" aria-label="LinkedIn" rel="noopener"
+          ><img src="/images/linkedin.svg" alt="" width="24" height="24" /></a
+        >
       </div>
     </div>
+
+    <!-- COL 3: Nav -->
+    <div class="footer-col footer-col--nav">
+       <ul class="footer-nav">
+        <li><a href="/#accueil">Accueil</a></li>
+        <li><a href="/#savoir-faire">Savoir-faire</a></li>
+        <li><a href="/#a-propos">À&nbsp;propos</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </div>
   </div>
+
   <div class="container footer-bottom">
     <span>© {new Date().getFullYear()} La Fabrique Materia. Tous droits réservés.</span>
     <a href="/mentions-legales">Mentions légales</a>

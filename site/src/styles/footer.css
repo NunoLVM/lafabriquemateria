@@ -7,21 +7,19 @@ footer {
   box-shadow: 0 0 0 100vmax var(--footer-bg);
   clip-path: inset(0 -100vmax);
 }
-.footer-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr auto;
+.footer-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* esq (logo+contact) | meio (social) | dir (nav) */
+  align-items: start;
   column-gap: clamp(2rem, 3vw, 3rem);
-  row-gap: clamp(1.25rem, 3vw, 2.5rem);
-  padding: clamp(2.5rem, 5vw, 3.5rem) 0;
-  align-items:start;
+  padding: clamp(4.5rem, 9vw, 7rem) 0; /* antes ~2.5–3.5rem */
+  row-gap: clamp(2rem, 4vw, 3rem);
+}
+.footer-grid > div:nth-child(3){
+  justify-self: end;
+  margin-right: clamp(2.5rem, 8vw, 8rem); /* aumenta se precisares (ex.: 10rem) */
 }
 
-.footer-grid h4 {
-  margin: 0 0 0.75rem;
-  font-weight: 700;
-  font-family: var(--font-secondary);
-  font-size: 1.1rem;
-}
 .footer-brand {
   font-family: var(--font-secondary);
   font-weight: 700;
@@ -41,10 +39,11 @@ footer {
   padding: 0;
 }
 .footer-nav li + li {
-  margin-top: 0.6rem;
+  margin-top: 0.9rem;
 }
 .footer-nav a {
   color: var(--footer-text);
+  font-size: var(--font-size-sm);
   text-decoration: none;
   opacity: 0.9;
   transition: opacity 0.3s, transform 0.3s;
@@ -91,7 +90,7 @@ footer {
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 2rem 0;
+  padding: clamp(2.25rem, 4vw, 3.25rem) 0;
   color: var(--footer-muted);
   font-size: 0.95rem;
   display: flex;
@@ -122,12 +121,33 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
+  .footer-grid > div:nth-child(3) {
+    justify-self: start;
+    margin-right: 0;
   }
 }
 @media (max-width: 560px) {
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Coluna 2 (Suivez–nous): tudo centrado */
+.footer-grid > div:nth-child(2){
+  text-align: center;
+}
+.footer-grid > div:nth-child(2) .footer-social{
+  justify-content: center;   /* centra o flex */
+  gap: clamp(.75rem, 2vw, 1.25rem);
+  margin-top: .25rem;        /* respiro abaixo do h4 (se existir) */
+}
+
+/* Em mobile mantém centrado (opcional) */
+@media (max-width: 900px){
+  .footer-grid > div:nth-child(2){
+    text-align: center;
+  }
+  .footer-grid > div:nth-child(2) .footer-social{
+    justify-content: center;
   }
 }

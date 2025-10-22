@@ -1,85 +1,102 @@
-/* Header / Nav */
-header {
+/* Overlay header (sempre sobre a imagem) */
+header.overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(var(--bg-color-rgb), 0.85);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--divider);
+  /* background: transparent; sem fundo */
+  border: 0; /* sem linha */
+  backdrop-filter: none; /* sem blur */
 }
 header .bar {
   display: flex;
   align-items: center;
   gap: var(--spacing-lg);
   padding: var(--spacing-md) 0;
+  min-height: var(--header-height); /* faz a barra ocupar essa altura */
 }
 header .brand {
   font-family: var(--font-secondary);
   font-weight: 700;
-  font-size: xx-large;
-  color: var(--brand-primary);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff;
   text-decoration: none;
 }
 
-nav {
+/* Transição suave do logo */
+header .brand img {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+header .nav {
   margin-left: auto;
   display: flex;
   gap: 3rem;
   padding-right: var(--spacing-lg);
 }
-nav a {
+header .nav a {
   font-family: var(--font-primary);
   font-weight: 400;
   letter-spacing: 0.02em;
+  color: #fff;
   text-decoration: none;
-  color: var(--text-color);
   display: inline-block;
   transform: translateZ(0);
-  transition: color 0.45s ease, transform 0.45s ease;
+  transition: color 0.45s ease, transform 0.45s ease, opacity 0.3s ease;
+  opacity: 0.92;
+  font-size: clamp(1.2rem, 3vw, 2rem);
 }
-nav a:hover,
-nav a:focus {
-  color: var(--brand-accent);
-  text-decoration: none;
+header .nav a:hover,
+header .nav a:focus {
+  color: var(--color-beige);
   transform: scale(1.06);
   outline: none;
+  opacity: 1;
 }
-
-nav a.is-active{
-  color: var(--brand-accent);
+header .nav a.is-active {
+  color: var(--color-beige);
   transform: scale(1.06);
 }
 
-
-.burger {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
+/* mobile (opcional simples) */
+@media (max-width: 768px) {
+  header .nav {
+    gap: 1.25rem;
+    padding-right: 0;
+  }
+}
+/* herdar a cauda da hero no header */
+/* Header base: transparente no topo */
+header.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  /* background: transparent;     nada de imagem/cor aqui */
+  border: 0;
+  backdrop-filter: none;
+  height: var(--header-height);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
-@media (max-width: 768px) {
-  .burger {
-    display: block;
-  }
+/* Quando sair da hero, ativa SÓ isto */
+header.overlay.with-hero-bg {
+  background-image: url("/hero-tail.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  background-attachment: fixed;
+  will-change: background-image, transform;
+  backface-visibility: hidden;
+  
+}
 
-  .nav {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    position: absolute;
-    top: var(--header-height);
-    right: 0;
-    background: var(--bg-color);
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
 
-  .nav.open {
-    display: flex;
-  }
+/* Quando o header “fixa” (fora da hero), some o logo */
+header.overlay.with-hero-bg .brand img {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none; /* só para garantir */
 }

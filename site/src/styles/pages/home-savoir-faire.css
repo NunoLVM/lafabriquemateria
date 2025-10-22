@@ -1,54 +1,78 @@
-.sf{
+.sf {
   background: var(--color-aqua);
-  box-shadow: 0 0 0 100vmax var(--color-aqua);
-  clip-path: inset(0 -100vmax);
-  
+  padding-block: clamp(3rem, 6vw, 5rem);
+  padding-inline: max(0px, calc((100vw - var(--container-max)) / 2));
 }
 
+/* --- Lede (título numa linha, justificado e colado ao texto) --- */
+.sf-text{
+  display:flex;
+  flex-direction:column;
+  gap:0;                 /* aproxima título do parágrafo */
+  max-width:60ch;
+  margin:0;                   /* garante que não há margem extra do wrapper */
+}
+.sf-lede{
+  display:block;
+  font-family: var(--font-special);
+  font-weight:700;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height:0.8;
+  letter-spacing:.01em;
+  margin:0;                   /* sem espaço acima/abaixo */
+  text-align:justify;
+  text-align-last:justify;
+}
+.sf-lede::after{
+  content:"";
+  display:inline-block;
+  width:100%;                 /* truque p/ justificar linha única */
+   height:0;
+  font-size:0;
+  line-height:0;
+}
 
-.sf h2 {
-  font-family: var(--font-secondary);
-  text-align: center;
-  margin: 0 0 0.5rem;
-}
-.sf-lead {
-  text-align: center;
-  max-width: 60ch;
-  margin: 0 auto 2rem;
-}
-
-.sf-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1rem, 3vw, 2rem);
-}
-@media (max-width: 900px) {
-  .sf-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 560px) {
-  .sf-grid {
-    grid-template-columns: 1fr;
-  }
+/* --- Parágrafo grande e justificado --- */
+.sf-intro{
+  margin-top: -0.55em;                   /* remove margem padrão do <p> */
+  font-family: var(--font-primary);
+  font-size: clamp(1.35rem, 2.8vw, 1.6rem);
+  line-height:2.1;
+  text-align:justify;
+  text-justify: inter-word;
+  hyphens:auto;
+  max-width:72ch;
+  opacity:.98;
 }
 
-.sf-card {
-  background: #fff;
-  border: 1px solid var(--divider);
-  border-radius: 14px;
-  overflow: hidden;
+/* --- Grid 2 colunas com alturas iguais --- */
+.sf-inner{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items:end;        /* colunas com a mesma altura */
 }
-.sf-card img {
-  width: 100%;
-  height: auto;
-  display: block;
+
+/* --- Coluna da imagem (alinhada em cima e em baixo com o texto) --- */
+.sf-inner{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,3rem); align-items:end; }
+
+.sf-media{ align-self:end; display:flex; }
+.sf-card{ flex:1; border:0; border-radius:12px; overflow:hidden; background:#fff; box-shadow:none; }
+
+.sf-photo{
+  width:100%;
+  height:auto;               /* mantém proporção natural */
+  aspect-ratio: 4 / 3;       /* controla a altura, evita “descer demais” */
+  object-fit:cover;
+  display:block;
 }
-.sf-card h3 {
-  font-family: var(--font-secondary);
-  margin: 0.9rem 1rem 0.25rem;
+
+/* Responsivo */
+@media (min-height:900px){
+  .sf-media{ min-height:420px; }
 }
-.sf-card p {
-  margin: 0 1rem 1rem;
-  opacity: 0.9;
+@media (max-width:900px){
+  .sf-inner{ grid-template-columns:1fr; }
+  .sf-text{ max-width:70ch; }
+  .sf-media{ min-height:260px; }
 }

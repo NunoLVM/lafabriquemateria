@@ -1,25 +1,14 @@
-<header>
+<header class="overlay" aria-label="Navigation principale">
   <div class="container bar">
-    <a class="brand" href="/" aria-label="Retour à l’accueil">La Fabrique Materia</a>
-
-    <button class="burger" aria-label="Menu" aria-expanded="false"> ☰ </button>
-    <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="/" aria-label="Retour à l’accueil">
+      <img id="siteLogo" src="/images/logowhitecopy.png" width="260" height="70" alt="La Fabrique Materia" />
+    </a>
+    <nav class="nav">
       <a href="/#accueil">Accueil</a>
       <a href="/#savoir-faire">Savoir-faire</a>
       <a href="/#a-propos">À&nbsp;propos</a>
       <a href="/#contact">Contact</a>
     </nav>
   </div>
-  <script src="/scripts/active-nav.js" type="module"></script>
+  
 </header>
-<!-- <script>
-  const burger = document.querySelector(".burger");
-  const nav = document.querySelector(".nav");
-
-  if (burger && nav) {
-    burger.addEventListener("click", () => {
-      nav.classList.toggle("open");
-      burger.setAttribute("aria-expanded", nav.classList.contains("open") ? "true" : "false");
-    });
-  }
-</script> -->

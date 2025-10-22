@@ -1,0 +1,35 @@
+/* Página Mentions légales */
+.legal {
+  max-width: 70ch;
+  margin: 0 auto;
+  padding: calc(var(--header-height) + clamp(1rem, 3vw, 2rem)) var(--gutter) clamp(3rem, 6vw, 4rem);
+  font-family: var(--font-primary);
+  color: var(--text-color);
+  line-height: 1.8;
+  text-align: center;
+}
+
+.legal h1 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-xl);
+  margin: 0 0 2rem;
+  color: var(--brand-primary);
+}
+
+.legal h2 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-lg);
+  margin: 2.5rem 0 1rem;
+  color: var(--brand-accent);
+}
+
+.legal p {
+  margin: 0 0 1.5rem;
+  opacity: 0.9;
+}
+
+.legal a {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  font-weight: 500;
+}

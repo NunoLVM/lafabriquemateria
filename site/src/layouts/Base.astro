@@ -1,32 +1,28 @@
 ---
 import "../styles/global.css";
+import "../styles/header.css";
 import Header from "../components/Header.astro";
+import "../styles/footer.css";
 import Footer from "../components/Footer.astro";
-import "../styles/components/scroll-cue.css";
-import CookieBanner from "../components/CookieBanner.astro";
 const { title = "La Fabrique Materia", description = "" } = Astro.props;
+const { showNav = true } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title><meta name="description" content={description} />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preload" as="image" href="/logo.webp" />
   </head>
-
   <body>
-    <Header />
-    <main id="contenu" class="container">
-      <main class="container">
-        <slot />
-      </main>
-      <!-- <CookieBanner /> -->
-    </main>
-    <Footer />
+    {showNav && <Header />}
+    
+    <main><slot /></main>
 
-    <a class="scroll-cue fixed" href="/#savoir-faire" aria-label="Faire défiler">
-      <img class="icon" src="/images/seta.svg" alt="" aria-hidden="true" width="22" height="22" />
-    </a>
-    <script src="/scripts/scroll-cue.js" type="module"></script>
+    <Footer />
+    <script type="module" src="/scripts/active-nav.js" defer></script>
   </body>
 </html>

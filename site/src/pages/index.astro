@@ -1,20 +1,23 @@
 ---
 import Base from "../layouts/Base.astro";
-import "../styles/pages/home.css";
-import "../styles/pages/home-savoir-faire.css";
-
 import SectionHero from "../components/SectionHero.astro";
-import SectionContact from "../components/SectionContact.astro";
 import SectionSavoirFaire from "../components/SectionSavoirFaire.astro";
 import SectionAPropos from "../components/SectionAPropos.astro";
-import "../styles/pages/home.css";
-import "../styles/pages/home-hero.css";
-import "../styles/pages/home-contact.css";
 ---
 
-<Base title="Accueil — La Fabrique materia" description="Page d’accueil du site vitrine.">
+<Base title="Accueil — La Fabrique Materia">
+  <!-- Accueil -->
   <SectionHero />
+  <!-- Savoir-faire -->
   <SectionSavoirFaire />
+
+  <!-- À propos -->
   <SectionAPropos />
-  <SectionContact />
+  <!-- Contact -->
+  <section id="contact" class="section" style="background:var(--color-green)">
+    <div class="container">
+      <h2 style="font-family:var(--font-secondary);margin:0 0 .5rem">Contact</h2>
+      <p>Formulaire avancé entrera ici.</p>
+    </div>
+  </section>
 </Base>

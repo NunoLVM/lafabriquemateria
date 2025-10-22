@@ -1,25 +1,23 @@
 ---
+// src/pages/mentions-legales.astro
 import Base from "../layouts/Base.astro";
+import "../styles/pages/legal.css";
 ---
 
-<Base title="Mentions légales — La Fabrique Matéria" description="Informations légales du site.">
-  <section class="section">
+<Base title="Mentions légales — La Fabrique Materia" description="Informations légales du site." showNav={false}>
+  <section class="section legal">
     <h1>Mentions légales</h1>
 
     <h2>Éditeur du site</h2>
     <p>
-      <strong>La Fabrique Matéria</strong><br />
+      <strong>La Fabrique Materia</strong><br />
       Adresse : …<br />
       SIREN/SIRET : …<br />
       Email : <a href="mailto:contact@lafabriquemateria.com">contact@lafabriquemateria.com</a>
     </p>
 
     <h2>Hébergeur</h2>
-    <p>
-      Nom : …<br />
-      Adresse : …<br />
-      Téléphone : …
-    </p>
+    <p>Nom : …<br />Adresse : …<br />Téléphone : …</p>
 
     <h2>Propriété intellectuelle</h2>
     <p>
@@ -28,20 +26,12 @@ import Base from "../layouts/Base.astro";
     </p>
 
     <h2>Données personnelles</h2>
-    <p>
-      Les données transmises via le formulaire de contact sont utilisées uniquement pour répondre à votre demande. Vous
-      pouvez exercer vos droits (accès, rectification, suppression) en nous écrivant à l’adresse ci-dessus.
-    </p>
+    <p>Les données transmises via le formulaire de contact sont utilisées uniquement pour répondre à votre demande…</p>
 
     <h2>Cookies</h2>
-    <p>
-      Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement (aucun cookie publicitaire).
-    </p>
+    <p>Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement.</p>
 
     <h2>Contact</h2>
-    <p>
-      Pour toute question, écrivez-nous : <a href="mailto:contact@lafabriquemateria.com"
-        >contact@lafabriquemateria.com</a>
-    </p>
+    <p>Écrivez-nous : <a href="mailto:contact@lafabriquemateria.com">contact@lafabriquemateria.com</a></p>
   </section>
 </Base>

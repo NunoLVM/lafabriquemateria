@@ -1,37 +1,33 @@
-/* HERO: sem cortar a foto + laterais preenchidas + véu branco */
 .hero{
   position: relative;
-  min-height: 70vh;
-  display: grid;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: grid;              /* centra o texto */
   place-items: center;
   text-align: center;
-  color: var(--text-color);
 }
-.hero > :not(.scroll-cue){ position: relative; z-index: 4; }
 
-/* camada 1 — fill desfocado (cover) para encher bordas */
-.hero .hero-media{
-  position:absolute; top:0; bottom:0;
-  left: calc(50% - 50vw); width:100vw;
-  background: center/cover no-repeat url("/images/fototeste1.webp");
-  filter: blur(14px) brightness(1.05) saturate(1.05);
-  transform: scale(1.06);         /* evita ver o blur a “acabar” */
+.hero-image{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* cobre sem distorcer */
   z-index: 0;
+  filter: brightness(.78);    /* legibilidade */
 }
 
-/* camada 2 — imagem inteira (contain), centrada, sem distorção */
-.hero .hero-image{
-  position:absolute; top:0; bottom:0;
-  left: calc(50% - 50vw); width:100vw; height:100%;
-  object-fit: contain; object-position: center;
+/* texto por cima da imagem */
+.hero h1,
+.hero p{
+  position: relative;
   z-index: 1;
+  color: #fff;
 }
 
-/* véu branco (“nevoeiro”) por cima das duas camadas */
-.hero::after{
-  content:"";
-  position:absolute; inset:0;
-  left: calc(50% - 50vw); width:100vw;
-  background: rgba(255,255,255,.1);  /* ↑ mais opaco / ↓ mais transparente */
-  z-index: 1;
-}
+/* se o header é fixo, a hero não leva espaço no topo */
+.section.hero{ padding-top: 0; }
+.hero-image{ object-position: center bottom; filter: none; }
+#hero-sentinel{ position:absolute; left:0; right:0; bottom:0; height:1px; }
