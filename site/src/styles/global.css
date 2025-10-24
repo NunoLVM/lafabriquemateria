@@ -1,24 +1,14 @@
-@import "./tokens.css";
-@import "./fonts.css";
+@import "./theme/tokens.css";
+@import "./theme/fonts.css";
+@import "./layout/base.css";
+@import "./layout/accessibility.css";
+@import "./pages/home.css";
+@import "./pages/home-hero.css";
+@import "./layout/header.css";
+@import "./layout/footer.css";
 
+
+/* Reset visual mínimo */
 * {
   box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  font-family: var(--font-primary);
-  color: var(--text-color);
-}
-.container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 2rem);
-}
-.section {
-  min-height: 70vh;
-  padding: clamp(3rem, 6vw, 5rem) 0;
-  scroll-margin-top: 96px;
 }

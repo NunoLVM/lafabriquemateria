@@ -1,0 +1,14 @@
+:focus {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav a {
+    transition: none;
+  }
+  nav a:hover,
+  nav a:focus {
+    transform: none;
+  }
+}

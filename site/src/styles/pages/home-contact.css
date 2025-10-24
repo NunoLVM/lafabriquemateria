@@ -4,12 +4,15 @@
   background: var(--section-contact-bg, var(--color-aqua));
   box-shadow: 0 0 0 100vmax var(--section-contact-bg, var(--color-aqua));
   clip-path: inset(0 -100vmax);
-  color: var(--color-cuir)
+  color: var(--color-cuir);
+  
+  
 }
 
 .contact-container {
   max-width: 820px;
   margin-inline: auto;
+  margin-top: 5rem;
 }
 
 .contact-title {

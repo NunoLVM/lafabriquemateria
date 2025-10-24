@@ -3,12 +3,26 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "migrate": "node --env-file=.env src/server/migrate.js",
+    "db:check": "node test-content.js",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.8"
+    "@astrojs/node": "^9.5.0",
+    "astro": "^5.13.8",
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.4.1",
+    "dotenv": "^17.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.9.1"
   }
 }
