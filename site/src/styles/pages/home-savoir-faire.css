@@ -61,12 +61,11 @@
 .sf-inner{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,3rem); align-items:end; }
 
 .sf-media{ align-self:end; display:flex; }
-.sf-card{ flex:1; border:0; border-radius:12px; overflow:hidden; background:#fff; box-shadow:none; }
+.sf-card{ flex:1; border:0; border-radius:12px; overflow:hidden; background:#fff; box-shadow:none; position:relative; aspect-ratio:4 / 3; }
 
 .sf-photo{
   width:100%;
-  height:auto;               /* mantém proporção natural */
-  aspect-ratio: 4 / 3;       /* controla a altura, evita “descer demais” */
+  height:100%;
   object-fit:cover;
   display:block;
 }
