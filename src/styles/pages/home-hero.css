@@ -15,11 +15,18 @@
   --font-primary: "Poppins", sans-serif;
 }
 
+.section.hero {
+  position: relative;
+  min-height: 100vh;
+  display: block;
+  overflow: hidden;
+  padding-top: 0;
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
   display: grid;
-  overflow: hidden;
   padding: clamp(2rem, 8vw, 7rem) clamp(1.5rem, 7vw, 6rem);
   margin: 0;
   font-family: var(--font-primary);
@@ -61,9 +68,82 @@
   display: block;
 }
 
+.hero-editable h2 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 500;
+  margin: 0;
+}
 
+.hero-editable h2 :where(button, span) {
+  font: inherit;
+}
 
-/* se o header é fixo, a hero não leva espaço no topo */
-.section.hero{ padding-top: 0; }
 .hero-image{ object-position: center bottom; filter: none; }
 #hero-sentinel{ position:absolute; left:0; right:0; bottom:0; height:1px; }
+
+/* Overview -------------------------------------------------- */
+.hero-overview {
+  background: var(--color-aqua);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 7vw, 6rem);
+  font-family: var(--font-primary);
+}
+
+.hero-overview__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: end;
+}
+
+.hero-overview__text {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  max-width: 68ch;
+}
+
+.hero-overview__title {
+  font-family: var(--font-special);
+  font-size: clamp(2rem, 4.8vw, 3rem);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-overview__lead {
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  margin: 0;
+  font-weight: 500;
+}
+
+.hero-overview__body {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 1.8;
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.hero-overview__media {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 38px rgba(25, 41, 44, 0.15);
+}
+
+.hero-overview__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 80vh;
+    padding-top: clamp(5rem, 18vh, 9rem);
+  }
+
+  .hero h1 {
+    white-space: normal;
+  }
+}
