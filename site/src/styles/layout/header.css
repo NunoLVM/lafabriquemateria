@@ -23,6 +23,7 @@ header .brand {
   font-size: clamp(2rem, 5vw, 3rem);
   color: #fff;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 /* Transição suave do logo */
