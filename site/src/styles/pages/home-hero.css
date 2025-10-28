@@ -43,10 +43,22 @@
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0;
+  white-space: nowrap; /* ← impede quebra */
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.hero p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  line-height: 1.4;
+}
+
+.hero p span {
+  display: block;
 }
 
 
