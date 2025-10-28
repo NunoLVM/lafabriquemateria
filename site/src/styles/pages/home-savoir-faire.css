@@ -2,51 +2,51 @@
   display: grid;
   align-items: center;
   background: var(--color-aqua);
-  padding-block: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(4rem, 8vw, 6rem);
   padding-inline: max(0px, calc((100vw - var(--container-max)) / 2));
-  min-height: 100vh;
-  
+  color: var(--color-cuir, #2f2217);
 }
 
-/* --- Lede (título numa linha, justificado e colado ao texto) --- */
-.sf-text{
-  display:flex;
-  flex-direction:column;
-  gap:0;                 /* aproxima título do parágrafo */
-  max-width:60ch;
-  margin:0;                   /* garante que não há margem extra do wrapper */
+.sf-inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 6vw, 4rem);
+  align-items: center;
 }
-.sf-lede{
-  display:block;
+
+.sf-text {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  max-width: 36rem;
+}
+
+.sf-kicker {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.sf-lede {
+  margin: 0;
   font-family: var(--font-special);
-  font-weight:700;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  line-height:0.8;
-  letter-spacing:.01em;
-  margin:0;                   /* sem espaço acima/abaixo */
-  text-align:justify;
-  text-align-last:justify;
-}
-.sf-lede::after{
-  content:"";
-  display:inline-block;
-  width:100%;                 /* truque p/ justificar linha única */
-   height:0;
-  font-size:0;
-  line-height:0;
+  font-weight: 700;
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
+  line-height: 0.9;
 }
 
-/* --- Parágrafo grande e justificado --- */
-.sf-intro{
-  margin-top: -0.55em;                   /* remove margem padrão do <p> */
+.sf-intro {
+  margin: 0;
   font-family: var(--font-primary);
-  font-size: clamp(1.35rem, 2.8vw, 1.6rem);
-  line-height:2.1;
-  text-align:justify;
-  text-justify: inter-word;
-  hyphens:auto;
-  max-width:72ch;
-  opacity:.98;
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  line-height: 1.5;
+  display: grid;
+  gap: 0.35em;
+}
+
+.sf-intro span {
+  display: block;
 }
 
 /* --- Grid 2 colunas com alturas iguais --- */
@@ -74,9 +74,11 @@
   display:block;
 }
 
-/* Responsivo */
-@media (min-height:900px){
-  .sf-media{ min-height:420px; }
+.sf-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 @media (max-width:900px){
   .sf-inner{ grid-template-columns:1fr; }
