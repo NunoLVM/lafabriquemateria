@@ -1,5 +1,4 @@
 ---
-import ScrollCue from "./ScrollCue.astro";
 import "../styles/pages/home-savoir-faire.css";
 ---
 
@@ -7,24 +6,114 @@ import "../styles/pages/home-savoir-faire.css";
   <div class="container">
     <div class="sf-inner">
       <div class="sf-text">
-        <h2 class="sf-lede">La Fabrique Materia</h2>
+        <p class="sf-kicker">Savoir-faire</p>
+        <h2 class="sf-lede">La fabrique qui transforme</h2>
         <p class="sf-intro">
-          valorise les rebuts industriels de cuir grâce à un savoir-faire artisanal, alliant conscience écologique et
-          innovation. Acteur engagé en économie circulaire, elle développe des matériaux durables et ouvre des
-          perspectives créatives pour relever les défis environnementaux de demain.
+          <span>les rebuts en ressources,</span>
+          <span>les évidences en questions,</span>
+          <span>la matière en idées.</span>
         </p>
       </div>
 
       <div class="sf-media">
-        <article class="sf-card">
-          <img
-            class="sf-photo"
-            src="/images/paravent.jpg"
-            alt="Paravent – matière La Fabrique Materia"
-            loading="lazy"
-          />
-        </article>
+        <div class="sf-carousel" data-carousel data-interval="5500">
+          <figure class="sf-slide is-active" data-slide>
+            <img
+              class="sf-photo"
+              src="/images/paravent.jpg"
+              alt="Paravent conçu avec la matière La Fabrique Materia"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="sf-slide" data-slide>
+            <img
+              class="sf-photo"
+              src="/images/hero-tail.jpg"
+              alt="Détail de texture matière upcyclée"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="sf-slide" data-slide>
+            <img
+              class="sf-photo"
+              src="/images/fototeste1.webp"
+              alt="Échantillons de matières en atelier"
+              loading="lazy"
+            />
+          </figure>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script type="module">
+  (() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const carousels = document.querySelectorAll('[data-carousel]');
+
+    carousels.forEach((carousel) => {
+      const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
+      if (slides.length <= 1) return;
+
+      let index = 0;
+      const interval = Number(carousel.dataset.interval) || 6000;
+      let timerId;
+
+      const setActive = (nextIndex) => {
+        slides[index].classList.remove('is-active');
+        index = nextIndex;
+        slides[index].classList.add('is-active');
+      };
+
+      const next = () => {
+        const nextIndex = (index + 1) % slides.length;
+        setActive(nextIndex);
+      };
+
+      const stop = () => {
+        if (timerId) {
+          window.clearInterval(timerId);
+          timerId = undefined;
+        }
+      };
+
+      const start = () => {
+        if (prefersReducedMotion.matches) return;
+        stop();
+        timerId = window.setInterval(next, interval);
+      };
+
+      const handleMotionChange = () => {
+        if (prefersReducedMotion.matches) {
+          stop();
+        } else {
+          start();
+        }
+      };
+
+      const handleVisibility = () => {
+        if (document.hidden) {
+          stop();
+        } else {
+          start();
+        }
+      };
+
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', start);
+      carousel.addEventListener('focusin', stop);
+      carousel.addEventListener('focusout', start);
+
+      if (typeof prefersReducedMotion.addEventListener === 'function') {
+        prefersReducedMotion.addEventListener('change', handleMotionChange);
+      } else if (typeof prefersReducedMotion.addListener === 'function') {
+        prefersReducedMotion.addListener(handleMotionChange);
+      }
+
+      document.addEventListener('visibilitychange', handleVisibility);
+
+      start();
+    });
+  })();
+</script>
