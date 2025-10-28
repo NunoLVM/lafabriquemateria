@@ -26,3 +26,5 @@ pnpm-debug.log*
 
 data/
 public/uploads/
+
+cookies.txt

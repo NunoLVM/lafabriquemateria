@@ -64,17 +64,8 @@
   justify-content:flex-end;
 }
 
-.sf-card{
-  flex:1;
-  border:0;
-  border-radius:12px;
-  overflow:hidden;
-  background:#fff;
-  box-shadow:none;
-  position:relative;
-  aspect-ratio:1 / 1;
-  width:min(100%, clamp(280px, 65vw, 520px));
-}
+.sf-media{ align-self:end; display:flex; }
+.sf-card{ flex:1; border:0; border-radius:12px; overflow:hidden; background:#fff; box-shadow:none; position:relative; aspect-ratio:4 / 3; }
 
 .sf-photo{
   width:100%;

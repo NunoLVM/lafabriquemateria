@@ -1,0 +1,42 @@
+---
+const { key, fallback = "" } = Astro.props;
+import "../styles/components/editable.css";
+
+let value = fallback;
+try {
+  const res = await fetch(`/api/content/get?keys=${encodeURIComponent(key)}`);
+  const data = await res.json();
+  value = data?.data?.[key] ?? fallback;
+} catch {}
+const isAdmin = Boolean(Astro.cookies.get("auth"));
+---
+
+<div class="editable" data-key={key}>
+  <span>{value}</span>
+  {
+    isAdmin && (
+      <button class="edit-btn" data-open-edit aria-label="Éditer">
+        ✎
+      </button>
+    )
+  }
+</div>
+
+<script type="module">
+  const root = document.currentScript.closest(".editable");
+  const btn = root.querySelector("[data-open-edit]");
+  if (btn)
+    btn.addEventListener("click", async () => {
+      const key = root.dataset.key;
+      const current = root.querySelector("span").textContent;
+      const next = prompt("Nouveau texte:", current);
+      if (next == null) return;
+      const r = await fetch("/api/content/set", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key, value: next }),
+      });
+      const ok = (await r.json()).ok;
+      if (ok) root.querySelector("span").textContent = next;
+    });
+</script>
