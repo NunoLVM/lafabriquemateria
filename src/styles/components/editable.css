@@ -1,0 +1,9 @@
+.editable { position: relative; display: inline-block; }
+.edit-btn{
+  position:absolute; top:-10px; right:-10px;
+  width:36px; height:36px; border-radius:50%;
+  border:2px solid var(--color-cuir);
+  background: color-mix(in srgb, var(--color-aqua) 92%, white);
+  color: var(--color-cuir); cursor:pointer;
+}
+.edit-btn:hover{ background: var(--color-cuir); color: var(--color-aqua); }

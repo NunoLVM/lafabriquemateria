@@ -7,18 +7,10 @@
 
   const linkFor = (id) => nav.querySelector(`a[href="/#${id}"], a[href="#${id}"]`);
   const links = new Map(IDS.map((id) => [id, linkFor(id)]).filter(([, a]) => a));
-  const contactLink = nav.querySelector('a[href="/contact"], a[href="/contact/"]');
   const setActive = (id) => {
     links.forEach((a) => a.classList.remove("is-active"));
-    if (contactLink) {
-      contactLink.classList.remove("is-active");
-    }
     const a = links.get(id);
-    if (a) {
-      a.classList.add("is-active");
-    } else if (id === "contact" && contactLink) {
-      contactLink.classList.add("is-active");
-    }
+    if (a) a.classList.add("is-active");
   };
 
   nav.querySelectorAll('a[href^="/#"], a[href^="#"]').forEach((a) => {
@@ -30,21 +22,6 @@
 
   if (location.hash) setActive(location.hash.slice(1));
   window.addEventListener("hashchange", () => setActive(location.hash.slice(1)));
-
-  const highlightPathLink = () => {
-    if (!contactLink) return;
-    const normalized = window.location.pathname.replace(/\/+$/, "") || "/";
-    if (normalized === "/contact") {
-      links.forEach((a) => a.classList.remove("is-active"));
-      contactLink.classList.add("is-active");
-    } else {
-      contactLink.classList.remove("is-active");
-    }
-  };
-
-  highlightPathLink();
-  window.addEventListener("popstate", highlightPathLink);
-  window.addEventListener("hashchange", highlightPathLink);
 
   const headerVar = getComputedStyle(document.documentElement).getPropertyValue("--header-height");
   const HEADER = parseInt(headerVar) || 64;

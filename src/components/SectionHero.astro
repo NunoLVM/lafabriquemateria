@@ -1,4 +1,6 @@
 ---
+import ScrollCue from "./ScrollCue.astro";
+import EditableText from "./EditableText.astro";
 import "../styles/pages/home-hero.css";
 ---
 
@@ -8,7 +10,17 @@ import "../styles/pages/home-hero.css";
 
   <section class="hero" id="hero">
     <div class="hero-content">
-      <h1>La Fabrique Materia</h1>
+      <h1>La fabrique qui transforme</h1>
+      <p>
+        <span>les rebuts en ressources,</span><br />
+        <span>les évidences en questions,</span><br />
+        <span>la matière en idées.</span>
+      </p>
+      <div style="margin-top:1rem">
+        <h2 style="font-size:1.5rem">
+          <EditableText key="home.hero.test" fallback="Texte test éditable" />
+        </h2>
+      </div>
     </div>
   </section>
 
