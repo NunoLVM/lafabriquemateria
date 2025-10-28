@@ -1,11 +1,9 @@
-.section--apropos {
+.section--about-team {
   padding: calc(var(--header-height) + clamp(1rem, 3vw, 2rem)) var(--gutter) clamp(3rem, 6vw, 4rem);
   background: var(--color-beige);
   color: var(--text-color);
   font-family: var(--font-primary);
-  text-align: center;
 }
-
 
 .about-grid {
   display: grid;
@@ -13,38 +11,29 @@
   gap: var(--gutter);
   align-items: start;
   margin-bottom: clamp(2rem, 4vw, 3rem);
-  text-align: left;
-  
 }
 
 .about-text p {
-
   line-height: 1.8;
   margin: 0 0 1.5rem;
   max-width: 65ch;
   opacity: 0.85;
   text-align: justify;
-  font-size: clamp(1.35rem, 2.8vw, 1.6rem);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+}
+
+.about-media {
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .about-media img {
-  width: clamp(100px, 80%, 300px);
+  width: clamp(14rem, 45vw, 22rem);
   height: auto;
   display: block;
-  margin-inline: auto;
   border-radius: 12px;
-}
-
-@media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .about-text p {
-    margin-left: auto;
-    margin-right: auto;
-  }
+  box-shadow: 0 18px 38px rgba(25, 41, 44, 0.15);
 }
 
 .team {
@@ -54,9 +43,9 @@
   font-family: var(--font-primary);
 }
 
-.team > h3 {
+.team > h2 {
   font-family: var(--font-special);
-  font-size: var(--font-size-xl);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
   margin: 0 0 2rem;
   color: var(--brand-primary);
 }
@@ -70,14 +59,12 @@
   padding: 0;
   margin: 0 auto;
   max-width: 1200px;
-   
 }
 
 .team-card {
   text-align: center;
   max-width: 240px;
   flex: 1 1 160px;
-  
 }
 
 .team-card img {
@@ -103,4 +90,21 @@
   font-size: 0.95rem;
   opacity: 0.7;
   font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .about-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-media {
+    justify-content: center;
+  }
 }

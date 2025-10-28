@@ -1,5 +1,4 @@
 ---
-import ScrollCue from "./ScrollCue.astro";
 import EditableText from "./EditableText.astro";
 import "../styles/pages/home-hero.css";
 ---
@@ -8,21 +7,45 @@ import "../styles/pages/home-hero.css";
   <div class="hero-media" aria-hidden="true"></div>
   <img class="hero-image" src="/images/hero.webp" alt="" aria-hidden="true" loading="lazy" />
 
-  <section class="hero" id="hero">
+  <div class="hero" id="hero" aria-labelledby="hero-title">
     <div class="hero-content">
-      <h1>La fabrique qui transforme</h1>
+      <h1 id="hero-title">La fabrique qui transforme</h1>
       <p>
         <span>les rebuts en ressources,</span><br />
         <span>les évidences en questions,</span><br />
         <span>la matière en idées.</span>
       </p>
-      <div style="margin-top:1rem">
-        <h2 style="font-size:1.5rem">
+      <div class="hero-editable">
+        <h2>
           <EditableText key="home.hero.test" fallback="Texte test éditable" />
         </h2>
       </div>
     </div>
-  </section>
+  </div>
 
   <div id="hero-sentinel" aria-hidden="true"></div>
+</section>
+
+<section class="section hero-overview" aria-label="Notre savoir-faire">
+  <div class="container hero-overview__inner">
+    <div class="hero-overview__text">
+      <h2 class="hero-overview__title">Matière &amp; méthode</h2>
+      <p class="hero-overview__lead">
+        Nous transformons les rebuts en ressources, les évidences en questions et la matière en idées concrètes.
+      </p>
+      <p class="hero-overview__body">
+        Valoriser les rebuts industriels de cuir demande une approche artisanale nourrie par la conscience écologique
+        et l’innovation. Chaque projet est l’occasion d’expérimenter, de prototyper et de développer des matériaux
+        durables qui ouvrent de nouvelles perspectives créatives pour relever les défis environnementaux de demain.
+      </p>
+    </div>
+    <figure class="hero-overview__media">
+      <img
+        src="/images/paravent.jpg"
+        alt="Paravent réalisé à partir des matériaux de La Fabrique Materia"
+        class="hero-overview__photo"
+        loading="lazy"
+      />
+    </figure>
+  </div>
 </section>
