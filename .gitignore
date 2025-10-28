@@ -1,12 +1,30 @@
-# Site (Astro)
-site/node_modules/
-site/dist/
-site/.astro/
-site/.vercel/
-site/.netlify/
+# build output
+dist/
 
-# SO / editor
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
 .DS_Store
-Thumbs.db
-.vscode/*
-!.vscode/extensions.json
+
+# jetbrains setting folder
+.idea/
+
+
+data/
+public/uploads/
+
+cookies.txt
