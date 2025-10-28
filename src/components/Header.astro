@@ -1,0 +1,75 @@
+<header class="overlay" aria-label="Navigation principale">
+  <div class="container bar">
+    <a class="brand" href="/" aria-label="Retour à l’accueil">
+      <img id="siteLogo" src="/images/logowhitecopy.png" alt="La Fabrique Materia" />
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="headerNav">
+      <span class="sr-only">Ouvrir le menu</span>
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <nav id="headerNav" class="nav" data-state="closed">
+      <a href="/#accueil">Accueil</a>
+      <a href="/#savoir-faire">Savoir-faire</a>
+      <a href="/#a-propos">À&nbsp;propos</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  const header = document.querySelector('header.overlay');
+  const toggle = header?.querySelector('.nav-toggle');
+  const nav = header?.querySelector('.nav');
+
+  if (toggle && nav) {
+    const mq = window.matchMedia('(max-width: 768px)');
+
+    const setState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      nav.dataset.state = isOpen ? 'open' : 'closed';
+      document.body.classList.toggle('nav-open', isOpen);
+    };
+
+    const syncState = () => {
+      if (!mq.matches) {
+        nav.dataset.state = 'open';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      } else if (toggle.getAttribute('aria-expanded') === 'true') {
+        nav.dataset.state = 'open';
+        document.body.classList.add('nav-open');
+      } else {
+        nav.dataset.state = 'closed';
+        document.body.classList.remove('nav-open');
+      }
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setState(!isOpen);
+    });
+
+    nav.addEventListener('click', (event) => {
+      const target = event.target;
+      if (mq.matches && target instanceof HTMLElement && target.closest('a')) {
+        setState(false);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setState(false);
+      }
+    });
+
+    const handleChange = () => syncState();
+
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', handleChange);
+    } else if (typeof mq.addListener === 'function') {
+      mq.addListener(handleChange);
+    }
+
+    syncState();
+  }
+</script>

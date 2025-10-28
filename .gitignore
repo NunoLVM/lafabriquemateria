@@ -1,12 +1,13 @@
-# Site (Astro)
-site/node_modules/
-site/dist/
-site/.astro/
-site/.vercel/
-site/.netlify/
+# Astro build artifacts
+node_modules/
+dist/
+.astro/
+.vercel/
+.netlify/
 
-# SO / editor
+# System / editor junk
 .DS_Store
 Thumbs.db
 .vscode/*
 !.vscode/extensions.json
+!.vscode/launch.json
