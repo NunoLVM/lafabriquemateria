@@ -138,11 +138,13 @@ header .sr-only {
 @media (max-width: 768px) {
   header .bar {
     gap: var(--spacing-md);
+
     padding: var(--spacing-sm) var(--gutter);
   }
 
   header .brand img {
     width: clamp(170px, 36vw, 220px);
+    
   }
 
   header .nav-toggle {
