@@ -102,10 +102,10 @@
 }
 
 .hero-overview__title {
-  font-family: var(--font-special);
+  font-family: var(--font-primary);
   font-size: clamp(2rem, 4.8vw, 3rem);
   margin: 0;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 0.05em;
 }
 
