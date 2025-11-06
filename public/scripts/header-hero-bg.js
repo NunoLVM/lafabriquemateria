@@ -7,16 +7,19 @@
 
     const heroSrc = heroImg.getAttribute("src") || "";
     const HEADER_H = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) || 80;
-    const OFFSET = 4;
+    const OFFSET = 0; // troca no limite exato do header
 
     const enableBg = () => {
-      if (!heroSrc) return;
+      // mesma imagem, mesma “lógica” visual: cover + base
       headerEl.style.removeProperty("background");
       headerEl.style.removeProperty("backgroundColor");
+
       headerEl.style.backgroundImage = `url("${heroSrc}")`;
       headerEl.style.backgroundRepeat = "no-repeat";
-      headerEl.style.backgroundSize = "cover";
       headerEl.style.backgroundPosition = "center bottom";
+      headerEl.style.backgroundSize = "cover"; // cobre o header sem deformar
+      headerEl.style.backgroundAttachment = "fixed"; // efeito fixo fluido
+
       headerEl.classList.add("with-hero-bg");
     };
 
@@ -38,12 +41,16 @@
       });
     };
 
+    const onResize = () => {
+      // mantém consistência após resize/orientation
+      if (headerEl.classList.contains("with-hero-bg")) enableBg();
+      onScroll();
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    window.addEventListener("orientationchange", onScroll, { passive: true });
-
-    console.debug("[header tail] heroSrc =", heroSrc);
+    window.addEventListener("resize", onResize, { passive: true });
+    window.addEventListener("orientationchange", onResize, { passive: true });
   };
 
   if (document.readyState === "loading") {

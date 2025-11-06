@@ -1,149 +1,222 @@
-/* home-hero.css — estilos específicos da secção hero */
+/* Banner topo */
+.hero-banner.section {
+  min-height: 0;
+  padding: 0;
+}
 
-.hero-image{
+.hero-banner {
+  position: relative;
+  height: 100vh;          /* cobre o ecrã todo */
+  overflow: hidden;       /* sem barras */
+  z-index: 0;
+}
+
+/* Imagem da hero: cobre e alinha pela base, sem filtros de cor */
+.hero .hero-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* cobre sem distorcer */
+  object-fit: cover;
+  object-position: center bottom;  /* base visível */
+   
+  pointer-events: none;
   z-index: 0;
-  filter: brightness(.78);    /* legibilidade */
 }
 
-/* texto por cima da imagem */
-:root {
-  --font-primary: "Poppins", sans-serif;
+/* Overlay opcional de escurecimento, se precisares de contraste (senão remove) */
+.hero-banner::after {
+  content: "";
+  position: absolute; inset: 0;
+  
+  pointer-events: none;
 }
 
-.section.hero {
-  position: relative;
-  min-height: 100vh;
-  display: block;
-  overflow: hidden;
-  padding-top: 0;
+/* Sentinel para o toggle do header */
+#hero-sentinel {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
 }
 
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: grid;
-  padding: clamp(2rem, 8vw, 7rem) clamp(1.5rem, 7vw, 6rem);
-  margin: 0;
-  font-family: var(--font-primary);
-  align-items: end;
-  justify-items: start;
-}
+/* ---------------- Bloco principal: texto + carrossel ---------------- */
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  text-align: left;
-  max-width: min(46rem, 100%);
-  font-family: var(--font-primary);
-  overflow: visible; /* ← garante que o texto não desaparece */
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  align-self: end;
-  justify-self: start;
-  display: grid;
-  gap: clamp(1rem, 2vw, 1.75rem);
-}
-
-.hero h1 {
-  white-space: nowrap; /* ← impede quebra */
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 500;
-  margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
-}
-
-.hero p {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  line-height: 1.4;
-}
-
-.hero p span {
-  display: block;
-}
-
-.hero-editable h2 {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  font-weight: 500;
-  margin: 0;
-}
-
-.hero-editable h2 :where(button, span) {
-  font: inherit;
-}
-
-.hero-image{ object-position: center bottom; filter: none; }
-#hero-sentinel{ position:absolute; left:0; right:0; bottom:0; height:1px; }
-
-/* Overview -------------------------------------------------- */
 .hero-overview {
   background: var(--color-aqua);
-  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 7vw, 6rem);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 7vw, 6rem);
   font-family: var(--font-primary);
 }
 
 .hero-overview__inner {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: clamp(2rem, 5vw, 3rem);
-  align-items: end;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  align-items: stretch;              /* sincroniza alturas */
+  min-height: min(65vh, 650px);      /* altura do bloco lado a lado */
 }
+
+/* Texto */
 
 .hero-overview__text {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   gap: clamp(1rem, 2vw, 1.5rem);
-  max-width: 68ch;
-}
-
-.hero-overview__title {
-  font-family: var(--font-primary);
-  font-size: clamp(2rem, 4.8vw, 3rem);
-  margin: 0;
-  /* text-transform: uppercase; */
-  letter-spacing: 0.05em;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: saturate(120%) blur(2px);
+  border-radius: 14px;
+  height: 100%;                       /* igual ao carrossel */
 }
 
 .hero-overview__lead {
-  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  font-size: clamp(1.8rem, 3.8vw, 2.5rem);  /* maior */
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .hero-overview__body {
-  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
-  line-height: 1.8;
+  font-size: clamp(1.25rem, 2.4vw, 1.45rem);
+  line-height: 1.7;
   margin: 0;
-  text-align: justify;
-  text-justify: inter-word;
 }
 
-.hero-overview__media {
+.hero-overview__body span {
+  display: block;
+}
+
+/* Carrossel */
+
+.hero-carousel {
+  position: relative;
   margin: 0;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 18px 38px rgba(25, 41, 44, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+  isolation: isolate;
+  height: 100%;                       /* casa com o texto */
 }
 
-.hero-overview__photo {
+.hero-carousel__viewport {
+  position: relative;
+  height: 100%;
+  min-height: 18rem;                  /* fallback */
+}
+
+.hero-carousel__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.hero-carousel__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-carousel__photo {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Controles */
+
+.hero-carousel__controls {
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.hero-carousel--enhanced .hero-carousel__controls {
+  display: flex;
+}
+
+.hero-carousel__control {
+  pointer-events: auto;
+  background: rgba(10, 31, 33, 0.65);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  width: 2.9rem;
+  height: 2.9rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.hero-carousel__control:hover,
+.hero-carousel__control:focus-visible {
+  background: rgba(10, 31, 33, 0.85);
+  outline: none;
+}
+
+/* Indicadores */
+
+.hero-carousel__indicators {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(0.8rem, 2vw, 1.2rem);
+  transform: translateX(-50%);
+  display: none;
+  gap: 0.6rem;
+}
+
+.hero-carousel--enhanced .hero-carousel__indicators {
+  display: flex;
+}
+
+.hero-carousel__indicator {
+  width: 0.78rem;
+  height: 0.78rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-carousel__indicator.is-active {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.hero-carousel__indicator:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Acessibilidade utilitária */
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* ---------------- Responsivo ---------------- */
+
 @media (max-width: 768px) {
-  .hero {
-    min-height: 80vh;
-    padding-top: clamp(5rem, 18vh, 9rem);
+  .hero-banner { height: 42vh; }        /* menos alto no mobile */
+
+  .hero-overview__inner {
+    grid-template-columns: 1fr;
+    min-height: unset;                   /* empilha */
   }
 
-  .hero h1 {
-    white-space: normal;
-  }
+  .hero-overview__text { height: auto; }
+  .hero-carousel { height: auto; }
+  .hero-carousel__viewport { min-height: clamp(14rem, 60vw, 18rem); }
+  .hero-carousel__control { width: 2.6rem; height: 2.6rem; }
+  .hero-carousel__indicator { width: 0.65rem; height: 0.65rem; }
 }

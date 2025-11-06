@@ -5,7 +5,7 @@ export const POST = async ({ request }) => {
     let body = {};
     try {
       body = await request.json();
-    } catch {}
+    } catch {} // Corriger
     const { email = "", password = "" } = body;
 
     const res = await validateLogin(email, password);

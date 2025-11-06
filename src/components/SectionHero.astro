@@ -1,48 +1,91 @@
 ---
+// SectionHero.astro
 import EditableText from "./EditableText.astro";
 import "../styles/pages/home-hero.css";
+
+const carouselImages = [
+  { src: "/images/paravent.jpg", alt: "Paravent réalisé à partir des matériaux de La Fabrique Materia" },
+  { src: "/images/hero-tail.jpg", alt: "Détail d'une pièce travaillée en atelier" },
+  { src: "/images/IMG_1541.jpg", alt: "Équipe de La Fabrique Materia en plein travail" },
+];
 ---
 
-<section id="accueil" class="section hero">
-  <div class="hero-media" aria-hidden="true"></div>
-  <img class="hero-image" src="/images/hero.webp" alt="" aria-hidden="true" loading="lazy" />
-
-  <!-- <div class="hero" id="hero" aria-labelledby="hero-title">
-    <div class="hero-content">
-      <h1 id="hero-title">La fabrique qui transforme</h1>
-      <p>
-        <span>les rebuts en ressources,</span><br />
-        <span>les évidences en questions,</span><br />
-        <span>la matière en idées.</span>
-      </p>
-      <div class="hero-editable">
-        <h2>
-          <EditableText key="home.hero.test" fallback="Texte test éditable" />
-        </h2>
-      </div>
-    </div>
-  </div> -->
-
+<!-- Banner full-bleed decorativo -->
+<section id="accueil" class="section hero hero-banner" data-tail-src="/images/hero-tail.jpg">
+  <!-- antes: class="hero-banner__image" -->
+  <img class="hero-image hero-banner__image" src="/images/hero.webp" alt="" loading="eager" />
   <div id="hero-sentinel" aria-hidden="true"></div>
 </section>
 
+<!-- Bloco principal: texto + carrossel, alturas alinhadas -->
 <section class="section hero-overview" aria-label="Notre savoir-faire">
   <div class="container hero-overview__inner">
-    <div class="hero-overview__text">
-      <p class="hero-overview__lead">La fabrique qui transforme</p>
-      <p>
+    <div class="hero-overview__text" role="region" aria-labelledby="hero-overview-title">
+      <p id="hero-overview-title" class="hero-overview__lead">La fabrique qui transforme</p>
+      <p class="hero-overview__body">
         <span>les rebuts en ressources,</span><br />
         <span>les évidences en questions,</span><br />
         <span>la matière en idées.</span>
       </p>
+      <!-- <div class="hero-editable">
+        <h2><EditableText key="home.hero.test" fallback="Texte test éditable" /></h2>
+      </div> -->
     </div>
-    <figure class="hero-overview__media">
-      <img
-        src="/images/paravent.jpg"
-        alt="Paravent réalisé à partir des matériaux de La Fabrique Materia"
-        class="hero-overview__photo"
-        loading="lazy"
-      />
-    </figure>
+
+    <div class="hero-carousel" data-carousel>
+      <div class="hero-carousel__viewport" id="hero-overview-carousel" aria-live="polite" aria-atomic="true">
+        {
+          carouselImages.map((image, index) => (
+            <figure
+              class={`hero-carousel__slide${index === 0 ? " is-active" : ""}`}
+              id={`hero-slide-${index}`}
+              aria-hidden={index === 0 ? "false" : "true"}>
+              <img
+                src={image.src}
+                alt={image.alt}
+                class="hero-carousel__photo"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </figure>
+          ))
+        }
+      </div>
+
+      <div class="hero-carousel__controls" aria-label="Navigation du carrousel">
+        <button
+          type="button"
+          class="hero-carousel__control hero-carousel__control--prev"
+          aria-controls="hero-overview-carousel"
+          data-action="prev">
+          <span aria-hidden="true">◀</span><span class="sr-only">Slide précédent</span>
+        </button>
+        <button
+          type="button"
+          class="hero-carousel__control hero-carousel__control--next"
+          aria-controls="hero-overview-carousel"
+          data-action="next">
+          <span aria-hidden="true">▶</span><span class="sr-only">Slide suivant</span>
+        </button>
+      </div>
+
+      <div class="hero-carousel__indicators" role="tablist" aria-label="Slides du carrousel">
+        {
+          carouselImages.map((_, index) => (
+            <button
+              type="button"
+              class={`hero-carousel__indicator${index === 0 ? " is-active" : ""}`}
+              role="tab"
+              aria-selected={index === 0 ? "true" : "false"}
+              aria-controls={`hero-slide-${index}`}
+              data-slide={index}>
+              <span class="sr-only">Aller au visuel {index + 1}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- Script externo -->
+<script src="/scripts/hero-carousel.js" type="module" defer></script>
